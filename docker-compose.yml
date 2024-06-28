@@ -3,7 +3,7 @@ version: '3.8'
 services:
   backend:
     build: 
-      context: ./backend
+      context: ./back-end-rx
     ports:
       - "5000:5000"
     depends_on:
@@ -13,7 +13,7 @@ services:
 
   frontend:
     build: 
-      context: ./frontend
+      context: ./front-end-rx
     ports:
       - "3000:3000"
     depends_on:
