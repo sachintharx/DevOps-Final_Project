@@ -6,10 +6,10 @@ pipeline {
     }
 
     environment {
-        REPO_URL = 'https://github.com/iRajapaksha/BookMyShoot.git'
+        REPO_URL = 'https://github.com/sachintharx/DevOps-Final_Project'
         BRANCH = 'main'
         DOCKER_REGISTRY = 'irajapaksha'
-        APP_NAME = 'BookMyShoot'
+        APP_NAME = 'RXAGRO'
         PORT = '3000'
     }
 
@@ -17,13 +17,6 @@ pipeline {
         stage('Clone Repository') {
             steps {
                 git branch: "${BRANCH}", url: "${REPO_URL}"
-            }
-        }
-
-        stage('Install Dependencies') {
-            steps {
-                echo 'Installing Dependencies...'
-                // Add the necessary commands to install dependencies if needed
             }
         }
 
