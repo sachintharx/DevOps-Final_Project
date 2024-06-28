@@ -6,15 +6,24 @@ pipeline {
     }
 
     environment {
-        REPO_URL = 'https://github.com/sachintharx/DevOps-Final_Project'
+        REPO_URL = 'https://github.com/iRajapaksha/BookMyShoot.git'
         BRANCH = 'main'
-        APP_NAME = 'RXAGRO'
+        DOCKER_REGISTRY = 'irajapaksha'
+        APP_NAME = 'BookMyShoot'
+        PORT = '3000'
     }
 
     stages {
         stage('Clone Repository') {
             steps {
                 git branch: "${BRANCH}", url: "${REPO_URL}"
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                echo 'Installing Dependencies...'
+                // Add the necessary commands to install dependencies if needed
             }
         }
 
@@ -30,6 +39,22 @@ pipeline {
             steps {
                 script {
                     bat 'docker-compose push'
+                }
+            }
+        }
+
+        stage('Free Port') {
+            steps {
+                script {
+                    // Check if the port is in use and free it if necessary
+                    def portCheck = bat(script: "netstat -ano | findstr :${PORT}", returnStatus: true)
+                    if (portCheck == 0) {
+                        def pid = bat(script: "for /f \"tokens=5\" %a in ('netstat -ano ^| findstr :${PORT}') do @echo %a", returnStdout: true).trim()
+                        echo "Killing process with PID ${pid} on port ${PORT}"
+                        bat "taskkill /PID ${pid} /F"
+                    } else {
+                        echo "Port ${PORT} is not in use."
+                    }
                 }
             }
         }
