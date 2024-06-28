@@ -8,7 +8,7 @@ pipeline {
     environment {
         REPO_URL = 'https://github.com/sachintharx/DevOps-Final_Project'
         BRANCH = 'main'
-        DOCKER_REGISTRY = 'hashara'
+        DOCKER_REGISTRY = 'irajapaksha'
         APP_NAME = 'RXAGRO'
         PORT = '3000'
     }
