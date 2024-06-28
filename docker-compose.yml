@@ -1,25 +1,15 @@
-version: '3.8'
-
+version: '3.9'
 services:
   backend:
-    build: 
-      context: ./back-end-rx
+    build: ./back-end-rx
     ports:
-      - "5000:5000"
-    depends_on:
-      - mongo
+      - '5000:5000'
     environment:
-      MONGO_URI: mongodb+srv://starmerals:rxagro@cluster1.hce89cy.mongodb.net/
+      - MONGODB_URI=mongodb+srv://starmerals:rxagro@cluster1.hce89cy.mongodb.net/
 
   frontend:
-    build: 
-      context: ./front-end-rx
+    build: ./front-end-rx
     ports:
-      - "3000:3000"
-    depends_on:
-      - backend
+      - '3000:3000'
 
-  mongo:
-    image: mongo:latest
-    ports:
-      - "27017:27017"
+
