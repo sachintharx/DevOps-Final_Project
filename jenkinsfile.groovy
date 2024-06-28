@@ -42,7 +42,7 @@ pipeline {
                     // Check if the port is in use and free it if necessary
                     def portCheck = bat(script: "netstat -ano | findstr \":${PORT}\"", returnStatus: true)
                     if (portCheck == 0) {
-                        def pid = bat(script: "for /f \"tokens=5\" %a in ('netstat -ano ^| findstr \":${PORT}\"') do @echo %a", returnStdout: true).trim()
+                        def pid = bat(script: "for /f \"tokens=5\" %%a in ('netstat -ano ^| findstr \":${PORT}\"') do @echo %%a", returnStdout: true).trim()
                         echo "Killing process with PID ${pid} on port ${PORT}"
                         bat "taskkill /PID ${pid} /F"
                     } else {
