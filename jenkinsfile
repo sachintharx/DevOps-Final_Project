@@ -2,14 +2,14 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_HUB_CREDENTIALS = credentials('pw')
+        DOCKER_HUB_CREDENTIALS = credentials('hashara4251')
     }
 
     stages {
         stage('SCM Checkout') {
             steps {
                 retry(3) {
-                    git branch: 'main', url: 'https://github.com/charith3903/devopss-final-project.git'
+                    git branch: 'main', url: 'https://github.com/sachintharx/DevOps-Final_Project'
                 }
             }
         }
@@ -25,9 +25,9 @@ pipeline {
         }
         stage('Login to Docker Hub') {
             steps {
-                withCredentials([string(credentialsId: 'pw', variable: 'dockerhubpw')]) {
+                withCredentials([string(credentialsId: 'hashara4251', variable: 'rxagro')]) {
                     script {
-                        bat "docker login -u charith01 -p %dockerhubpw%"
+                        bat "docker login -u vidusanka -p %dockerhubpw%"
                     }
                 }
             }
@@ -35,9 +35,10 @@ pipeline {
         stage('Tag and Push Images to Docker Hub') {
             steps {
                 script {
-                    def images = ["devopsproject-backend", "devopsproject-frontend"]
-                    def dockerHubRepos = ["charith01/backend-app", "charith01/frontend-app"]
+                    def images = ["devops-backend", "devops-frontend"]
+                    def dockerHubRepos = ["vidusanka/backend-agro", "vidusanka/frontend-agro"]
                     def buildNumber = env.BUILD_NUMBER
+                    
 
                     images.eachWithIndex { image, index ->
                         def repo = dockerHubRepos[index]
