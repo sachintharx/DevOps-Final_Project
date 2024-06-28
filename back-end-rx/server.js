@@ -6,12 +6,12 @@ const dotenv = require("dotenv");
 const app = express();
 require("dotenv").config();
 
-const PORT = process.env.PORT || 8080;
+const PORT = 5000;
 
 app.use(cors());
 app.use(bodyParser.json());
 
-const URL = process.env.MONGODB_URL ;
+const URL = "mongodb+srv://starmerals:rxagro@cluster1.hce89cy.mongodb.net/" ;
 
 mongoose.connect (URL,{
     

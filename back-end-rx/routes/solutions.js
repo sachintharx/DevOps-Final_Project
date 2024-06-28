@@ -3,7 +3,7 @@ let Solution = require("../models/solution");
 
 
 
-http://Localhost:8080/solution/add
+
 
 router.route("/addSolution").post((req, res) => {
     const ownerName = req.body.ownerName;
@@ -39,7 +39,7 @@ router.route("/addSolution").post((req, res) => {
 });
 
 
-http://Localhost:8080/solution/updateSolution
+
 
 router.route("/updateSolution/:id").put((req, res) => {
     const ownerId = req.params.id; 
@@ -69,7 +69,7 @@ router.route("/updateSolution/:id").put((req, res) => {
 
 
 
-http://Localhost:8080/solution/deleteSolution
+
 
 router.route("/deleteSolution/:id").delete((req, res) => {
     const ownerId = req.params.id; 
@@ -85,7 +85,7 @@ router.route("/deleteSolution/:id").delete((req, res) => {
 });
 
 
-http://Localhost:8080/solution/getAllSolutions
+
 
 router.route("/getAllSolutions").get((req, res) => {
     Solution.find()
@@ -99,7 +99,7 @@ router.route("/getAllSolutions").get((req, res) => {
 });
 
 
-http://Localhost:8080/solution/getAllSolutions/:id
+
 
 
 router.route("/getSolutions/:id").get(async(req,res) => {

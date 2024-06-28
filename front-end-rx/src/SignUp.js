@@ -36,7 +36,7 @@ function Signup() {
     };
 
     axios
-      .post("http://localhost:8080/farmer/add", newFarmer)
+      .post("http://localhost:5000/farmer/add", newFarmer)
       .then(() => {
         alert("User Added");
         setSuccessMessage('User Added');

@@ -23,7 +23,7 @@ function LogInWindow() {
       // Make an API request to your backend for user authentication
 
       console.log('Before login request');
-      const response = await axios.post('http://localhost:8080/farmer/login', {
+      const response = await axios.post('http://localhost:5000/farmer/login', {
         email,
         password,
       });

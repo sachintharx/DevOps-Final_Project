@@ -5,7 +5,6 @@ const saltRounds = 10;
 const cors = require('cors');
 const bodyParser = require('body-parser');
 
-http://Localhost:8080/farmer/add
 
 router.route("/add").post((req, res) => {
     const name = req.body.name;
@@ -61,7 +60,7 @@ router.route("/add").post((req, res) => {
 // })
 
 
-http://Localhost:8080/farmer/update/
+
 
 router.route("/update/:id").put(async(req,res) => {
 
@@ -92,7 +91,7 @@ router.route("/update/:id").put(async(req,res) => {
 
 
 
-http://Localhost:8080/farmer/delete
+
 
 router.route("/delete/:id").delete(async(req,res) => {
     
@@ -111,7 +110,7 @@ router.route("/delete/:id").delete(async(req,res) => {
 })
 
 
-http://Localhost:8080/farmer/get
+
 
 router.route("/get/:id").get(async(req,res) => {
 

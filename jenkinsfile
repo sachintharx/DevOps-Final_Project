@@ -1,0 +1,62 @@
+pipeline {
+    agent any
+
+    environment {
+        DOCKER_HUB_CREDENTIALS = credentials('pw')
+    }
+
+    stages {
+        stage('SCM Checkout') {
+            steps {
+                retry(3) {
+                    git branch: 'main', url: 'https://github.com/charith3903/devopss-final-project.git'
+                }
+            }
+        }
+        stage('List Directory Contents') {
+            steps {
+                bat 'dir'
+            }
+        }
+        stage('Run Docker Compose') {
+            steps {
+                bat 'docker-compose up -d --build'
+            }
+        }
+        stage('Login to Docker Hub') {
+            steps {
+                withCredentials([string(credentialsId: 'pw', variable: 'dockerhubpw')]) {
+                    script {
+                        bat "docker login -u charith01 -p %dockerhubpw%"
+                    }
+                }
+            }
+        }
+        stage('Tag and Push Images to Docker Hub') {
+            steps {
+                script {
+                    def images = ["devopsproject-backend", "devopsproject-frontend"]
+                    def dockerHubRepos = ["charith01/backend-app", "charith01/frontend-app"]
+                    def buildNumber = env.BUILD_NUMBER
+
+                    images.eachWithIndex { image, index ->
+                        def repo = dockerHubRepos[index]
+                        bat "docker tag ${image}:latest ${repo}:${buildNumber}"
+                        bat "docker tag ${image}:latest ${repo}:latest"
+                        retry(3) {
+                            bat "docker push ${repo}:${buildNumber}"
+                        }
+                        retry(3) {
+                            bat "docker push ${repo}:latest"
+                        }
+                    }
+                }
+            }
+        }
+    }
+    post {
+        always {
+            bat 'docker logout'
+        }
+    }
+}

@@ -10,7 +10,7 @@ function SolutionList() {
 
     useEffect(() => {
         // Fetch solutions from your backend API
-        fetch('http://Localhost:8080/solution/getAllSolutions')
+        fetch('http://Localhost:5000/solution/getAllSolutions')
             .then((response) => response.json())
             .then((data) => {
                 setSolutions(data);
@@ -22,7 +22,7 @@ function SolutionList() {
 
     const deleteSolution = (id) => {
         // Send a request to delete the solution
-        fetch(`http://Localhost:8080/solution/deleteSolution/${id}`, {
+        fetch(`http://Localhost:5000/solution/deleteSolution/${id}`, {
             method: 'DELETE',
         })
         .then(() => {

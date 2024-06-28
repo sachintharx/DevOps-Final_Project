@@ -30,7 +30,7 @@ function AddSolution() {
             solution
         };
 
-        fetch('http://Localhost:8080/solution/addSolution', {
+        fetch('http://Localhost:5000/solution/addSolution', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

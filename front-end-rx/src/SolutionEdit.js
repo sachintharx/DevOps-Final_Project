@@ -16,7 +16,7 @@ function SolutionEdit() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch(`http://Localhost:8080/solution/getSolutions/${id}`)
+        fetch(`http://Localhost:5000/solution/getSolutions/${id}`)
             .then((response) => response.json())
             .then((data) => {
                 setSolution(data.solution);
@@ -28,7 +28,7 @@ function SolutionEdit() {
 
     const handleUpdate = () => {
         // Send a PUT request to update the solution
-        fetch(`http://Localhost:8080/solution/updateSolution/${id}`, {
+        fetch(`http://Localhost:5000/solution/updateSolution/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
