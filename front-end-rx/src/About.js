@@ -13,7 +13,7 @@ function About() {
           <div className={styles.dataDrivenInsightsInner} />
           <b className={styles.dataDrivenInsights1}>Data-Driven Insights</b>
           <div className={styles.ourConsultantsAre2}>
-            Our consultants are highly skilled and experienced in various aspects of agriculture, from crop management and soil health to sustainable practices and modern technology integration.
+            Our consultants are highly skilled and experienced in various aspects of agriculture, from crop management and soil health to sustainable practices and modern technology integration..
           </div>
         </div>
         <div className={styles.tailoredSolutions}>
