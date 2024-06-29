@@ -29,7 +29,7 @@ function Header() {
         <div className={styles.signin}>
           <div className={styles.signinChild} />
           <Link to="/login" className={styles.signUp}>
-            Sign in
+            Sign In
             </Link>
           
         </div>
