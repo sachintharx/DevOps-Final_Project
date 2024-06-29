@@ -39,7 +39,7 @@ function Header() {
           className={styles.home}
           activeClassName={styles.active} // Use your style class for active links
         >
-          Home Page
+          Home
         </NavLink>
         <NavLink
           to="/service"
@@ -60,7 +60,7 @@ function Header() {
           className={styles.account}
           activeClassName={styles.active} // Use your style class for active links
         >
-          Solutions
+          Solutions from Farmers
         </NavLink>
       </div>
 
