@@ -39,7 +39,7 @@ function Header() {
           className={styles.home}
           activeClassName={styles.active} // Use your style class for active links
         >
-          Home Page
+          Home
         </NavLink>
         <NavLink
           to="/service"
